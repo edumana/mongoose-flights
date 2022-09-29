@@ -1,0 +1,30 @@
+<%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/flights/new.css" />
+<%- include('../partials/nav') %>
+
+<main>
+	<h1><%= title %></h1>
+  <p>Please check the meal has not been entered already.
+    <table>
+      <thead>
+        <tr>
+          <th>Meal</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% meals.forEach(function(meal) { %>
+        <tr>
+          <td style="text-align: center; font-size: 1.2em; "><%= meal.meal %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+    </table>
+  </p>
+  <form id="add-performer-form" action="/meals" method="POST">
+    <label for="name-input">Meal:</label>
+    <input type="text" name="meal" id="name-input">
+    <button type="submit">Add Meal</button>
+  </form>
+</main>
+
+<%- include('../partials/footer') %>

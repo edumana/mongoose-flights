@@ -19,6 +19,12 @@
     <div><%= flight.flightNo %></div>
     <div>Departure.: </div>
     <div><%= flight.departs.toDateString() %></div>
+    <div>Meals: </div>
+    <div><ul>
+      <% flight.meals.forEach(meal => { %>
+        <li><%= meal.meal %></li>
+      <% }) %>
+    </ul></div>
   </section>
 
 
@@ -54,6 +60,16 @@
       </tbody>
     </table>
 	<% } %>
+
+  <h2>Add Meals</h2>
+  <form id="add-per-to-cast" action="/flights/<%= flight._id %>/meals" method="POST">
+    <select name="mealId">
+      <% meals.forEach(meal => { %>
+        <option value="<%= meal._id %>"><%= meal.meal %></option>
+      <% }) %>
+    </select>
+    <button type="submit">Add to Flight</button>
+  </form>
 </main>
 
 <%- include("../partials/footer") %>
